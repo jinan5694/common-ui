@@ -1,12 +1,19 @@
 import './table.scss'
 import { createComponent, ref, onMounted } from '@vue/composition-api'
 import useWrapperPosition from './compositions/usePosition'
+import { visible } from 'ansi-colors'
 
 export default createComponent({
   name: 'CTable',
   props: {
     data: Array,
     columns: Array
+  },
+  data () {
+    return {
+      visibleData: [],
+      visibleColumns: []
+    }
   },
   setup (props, ctx) {
     const { x, y, width, height } = useWrapperPosition(ctx)

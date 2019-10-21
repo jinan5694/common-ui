@@ -1,3 +1,30 @@
 .c-table {
   border: 1px solid red;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  // 隐形容器
+  &__phantom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  &__content {
+    left: 0;
+    right: 0;
+    top: 0;
+    position: absolute;
+  }
+  
+  &__item {
+    padding: 5px;
+    color: #666;
+    line-height: 30px;
+    box-sizing: border-box;
+  }
 }
