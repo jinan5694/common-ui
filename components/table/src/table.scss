@@ -1,6 +1,8 @@
 .c-table {
+  position: relative;
   border: 1px solid red;
 
+<<<<<<< HEAD
   &__wrapper {
     position: relative;
   }
@@ -26,5 +28,20 @@
     color: #666;
     line-height: 30px;
     box-sizing: border-box;
+=======
+  &__header {
+    display: flex;
+  }
+
+  &__row {
+    display: flex;
+    border-top: 1px solid #999;
+  }
+
+  &__cell {
+    box-sizing: border-box;
+    display: flex;
+    padding: 4px 8px;
+>>>>>>> 0bece7c5cb410a34945c82e11f7c7ba8497805c9
   }
 }
