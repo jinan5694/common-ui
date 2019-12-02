@@ -7,6 +7,9 @@ import '@/plugins/composition-api'
 
 import router from './router'
 
+import CommonUi from '../dist/common-ui.common'
+Vue.use(CommonUi)
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false

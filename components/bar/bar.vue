@@ -1,12 +1,10 @@
 <template>
-  <div class="cell">
-    cell
-  </div>
+  <div>bar</div>
 </template>
 
 <script>
 export default {
-
+  name: 'Bar'
 }
 </script>
 
