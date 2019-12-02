@@ -1,6 +1,23 @@
 .c-table {
+  height: 300px;
+  overflow: auto;
   position: relative;
   border: 1px solid red;
+
+  &__phantom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+  }
+
+  &__content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
 
   &__header {
     display: flex;

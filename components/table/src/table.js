@@ -1,39 +1,42 @@
-import './table.scss'
-import { createComponent, onMounted } from '@vue/composition-api'
-import useWrapperPosition from './compositions/usePosition'
-import { visible } from 'ansi-colors'
+import {
+  createComponent,
+  createElement as h,
+  onMounted,
+  ref
+} from '@vue/composition-api'
+// import useWrapperSize from './compositions/use-wrapper-size'
+// import usePhantomPosition from './compositions/usePhantomPosition'
 
 export default createComponent({
   name: 'CTable',
   props: {
     data: Array,
     columns: Array,
+    height: { type: Number },
     rowHeight: { type: Number, default: 30 }
   },
-  data () {
-    return {
-      visibleData: [],
-      visibleColumns: []
-    }
-  },
   setup (props, ctx) {
-    const { x, y, width, height } = useWrapperPosition(ctx)
+    // const { width, height } = useWrapperSize(props)
+    // const phantomStyle = usePhantomPosition(props)
+    const visibleData = ref([])
+    // const visibleColumns = ref([])
 
+    function updateVisibleData () {
+      console.log('updateVisibleData', props)
+      visibleData.value = props.data.slice(1, 20)
+    }
     onMounted(() => {
-      console.log(`table 挂载时间：${width.value}`)
+      updateVisibleData()
     })
 
-    return { x, y, width, height }
+    // return { left, top, width, height, visibleData, phantomStyle }
+    return () => (
+      <div ref="wrapper" class="c-table">table</div>
+    )
   },
   methods: {
-    getRow () {
-
-    },
-    getCell () {
-
-    },
-    renderMousePosition (ctx) {
-      return <span>{ctx.x}|{ctx.y}</span>
+    handleScroll () {
+      console.log('scroll')
     },
     renderRow (row, columns) {
       return (
@@ -51,21 +54,25 @@ export default createComponent({
   },
   render () {
     return (
-      <div class="c-table" ref="wrapper">
-        <div class="c-table__header">
-          {
-            this.columns.map(column => {
-              return this.renderCell({ column, type: 'header' })
-            })
-          }
+      <div ref="wrapper" class="c-table" onScroll={this.handleScroll}>
+        <div class="c-table__phantom" style={ this.phantomStyle }></div>
+        <div class="c-table__content">
+          <div class="c-table__header">
+            {
+              this.columns.map(column => {
+                return this.renderCell({ column, type: 'header' })
+              })
+            }
+          </div>
+          <div class="c-table__body">
+            {
+              this.visibleData.map(row => {
+                return this.renderRow(row, this.columns)
+              })
+            }
+          </div>
         </div>
-        <div class="c-table__body">
-          {
-            this.data.map(row => {
-              return this.renderRow(row, this.columns)
-            })
-          }
-        </div>
+        <pre>{this.left}</pre>
       </div>
     )
   }

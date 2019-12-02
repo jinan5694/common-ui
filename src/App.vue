@@ -14,6 +14,9 @@
             <el-menu-item index="/demo">
               <span slot="title">Demo</span>
             </el-menu-item>
+            <el-menu-item index="/test">
+              <span slot="title">Test</span>
+            </el-menu-item>
           </el-menu>
         </el-aside>
         <el-main>
