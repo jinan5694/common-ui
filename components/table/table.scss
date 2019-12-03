@@ -1,0 +1,39 @@
+.c-table {
+
+  &-wrapper {
+    height: 500px;
+    position: relative;
+    overflow: auto;
+    border: 1px solid #ccc;
+  }
+  &-phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+  &-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+  }
+
+  &-item {
+    padding: 5px;
+    color: #666;
+    line-height: 30px;
+    box-sizing: border-box;
+
+    display: flex;
+  }
+
+  &-cell {
+    width: 100px;
+    flex: none;
+    box-sizing: border-box;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+  }
+}
